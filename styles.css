@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a;
+    background-image: radial-gradient(circle at center, #2a2a2a 0%, #111 100%);
+    font-family: system-ui, sans-serif;
+    overflow: hidden;
+    perspective: 1000px; /* Essential for 3D effect */
+}
+
+/* The Container for the 3D Object */
+.coin-container {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    cursor: pointer;
+    /* Bounce animation on hover */
+    transition: transform 0.3s ease;
+}
+
+.coin-container:active {
+    transform: scale(0.95);
+}
+
+/* The Coin Itself */
+.coin {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d; /* Allows front and back */
+    transition: transform 3s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth deceleration */
+}
+
+/* Shared Face Styles (Gold Texture) */
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    backface-visibility: hidden; /* Hides the back when facing away */
+    
+    /* The "Gold" Effect */
+    background: conic-gradient(
+        #ffd700, #b8860b, #ffd700, #b8860b, #ffd700
+    );
+    box-shadow: 
+        inset 0 0 0 5px #b8860b, /* Inner dark ring */
+        inset 0 0 0 10px #ffd700, /* Inner light ring */
+        0 10px 20px rgba(0,0,0,0.5); /* Drop shadow */
+        
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #b8860b;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.4), -1px -1px 0 rgba(0,0,0,0.4); /* Engraved look */
+}
+
+/* Face Specifics */
+.heads {
+    transform: rotateY(0deg);
+}
+
+/* We put a pattern on Heads */
+.heads::after {
+    content: "😃";
+    font-size: 8rem;
+    background: linear-gradient(45deg, #b8860b, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 0 rgba(255,255,255,0.3));
+}
+
+.tails {
+    transform: rotateY(180deg);
+}
+
+/* We put text on Tails */
+.tails::after {
+    content: "✖️";
+    font-size: 8rem;
+    background: linear-gradient(45deg, #b8860b, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 0 rgba(255,255,255,0.3));
+}
+
+/* The Ridge (The bumpy edge of a coin) */
+/* We simulate this with a pseudo-element on the container */
+.coin::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%;
+    z-index: -1;
+    /* A dashed border looks like ridges */
+    border: 4px dashed #996515; 
+    transform: translateZ(-5px); /* Slight depth */
+}
+
+#instruction {
+    position: absolute;
+    bottom: 50px;
+    color: #666;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    opacity: 0.7;
+}

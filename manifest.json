@@ -1,0 +1,21 @@
+{
+    "name": "Coin Flip",
+    "short_name": "Coin",
+    "start_url": "/coin/",
+    "scope": "/coin/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/coin/icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/coin/icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
