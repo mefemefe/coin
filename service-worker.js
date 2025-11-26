@@ -1,5 +1,5 @@
 const CACHE_NAME = 'coin-v1';
-const ASSETS = ['/', '/icon.png', '/index.html', '/styles.css', '/script.js', '/manifest.json'];
+const ASSETS = ['/coin/', '/coin/icon.png', '/coin/index.html', '/coin/styles.css', '/coin/script.js', '/coin/manifest.json'];
 
 // Install event: cache essential files
 self.addEventListener('install', event => {
